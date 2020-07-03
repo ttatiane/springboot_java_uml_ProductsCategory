@@ -21,13 +21,13 @@ public class CategoryResource {
 	
 	@GetMapping
 	public ResponseEntity<List<Category>> buscarTodos() {
-		List<Category> listCategories = categoryRepository.buscarTodos();
+		List<Category> listCategories = categoryRepository.findAll();
 		return ResponseEntity.ok().body(listCategories);
 	}
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Category> buscarPorId(@PathVariable Long id) {
-		Category cat = categoryRepository.buscarPorId(id);
+		Category cat = categoryRepository.findById(id).get();
 		return ResponseEntity.ok().body(cat);
 	}
 	
