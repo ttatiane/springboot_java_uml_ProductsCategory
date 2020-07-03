@@ -31,8 +31,7 @@ public class ProductsCategoryApplication implements CommandLineRunner {
 		Category cat1 = new Category(null, "Eletronics");
 		Category cat2 = new Category(null, "Books");
 		
-		categoryRepository.salvar(cat1);
-		categoryRepository.salvar(cat2);
+		categoryRepository.saveAll(Arrays.asList(cat1, cat2));
 		
 		//instanciando e salvando objetos da Entidade Product
 		Product p1 = new Product(null, "TV", 2200.00, cat1);
@@ -43,10 +42,7 @@ public class ProductsCategoryApplication implements CommandLineRunner {
 		cat1.getProducts().addAll(Arrays.asList(p1, p3));
 		cat2.getProducts().addAll(Arrays.asList(p2, p4));
 		
-		productRepository.salvar(p1);
-		productRepository.salvar(p2);
-		productRepository.salvar(p3);
-		productRepository.salvar(p4);
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4));
 		
 	}
 
