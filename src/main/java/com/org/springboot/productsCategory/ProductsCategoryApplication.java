@@ -1,5 +1,7 @@
 package com.org.springboot.productsCategory;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -33,10 +35,13 @@ public class ProductsCategoryApplication implements CommandLineRunner {
 		categoryRepository.salvar(cat2);
 		
 		//instanciando e salvando objetos da Entidade Product
-		Product p1 = new Product(1L, "TV", 2200.00);
-		Product p2 = new Product(2L, "Domain Driven Design", 120.00);
-		Product p3 = new Product(3L, "PS5", 2800.00);
-		Product p4 = new Product(4L, "Docker", 100.00);
+		Product p1 = new Product(1L, "TV", 2200.00, cat1);
+		Product p2 = new Product(2L, "Domain Driven Design", 120.00, cat2);
+		Product p3 = new Product(3L, "PS5", 2800.00, cat1);
+		Product p4 = new Product(4L, "Docker", 100.00, cat2);
+		
+		cat1.getProducts().addAll(Arrays.asList(p1, p3));
+		cat2.getProducts().addAll(Arrays.asList(p2, p4));
 		
 		productRepository.salvar(p1);
 		productRepository.salvar(p2);
